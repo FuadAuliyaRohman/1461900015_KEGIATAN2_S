@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    
+    {{-- CSS --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+    
+    {{-- JS --}}
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+
+    <title>Tugas Praktikum 2</title>
+  </head>
+  <body>
+    {{-- Select --}}
+    <div class="container" style="margin-top: 10px;">
+        <div class="row">   
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">Daftar Guru</div>
+                    <div class="card-body">
+                        <table data-toggle="table" data-search="true">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>NIP</th>
+                            <th>Kelamin</th>
+                            <th>Alamat</th>
+                            <th>Telphone</th>
+                            <th>Username</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($select as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->nama_guru }}</td>
+                                <td>{{ $item->nip }}</td>
+                                <td>{{ $item->kelamin }}</td>
+                                <td>{{ $item->alamat_guru }}</td>
+                                <td>{{ $item->telpon_guru }}</td>
+                                <td>{{ $item->username }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Select Join --}}
+    <div class="container" style="margin-top: 10px;">
+        <div class="row">   
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">Daftar Guru, Mata Pelajaran, dan Kelas</div>
+                    <div class="card-body">
+                        <table data-toggle="table" data-search="true">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Guru</th>
+                            <th>Mata Pelajaran</th>
+                            <th>Kelas</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($select_join as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->nama_guru }}</td>
+                                <td>{{ $item->nama_pelajaran }}</td>
+                                <td>{{ $item->nama_kelas }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>
