@@ -26,7 +26,7 @@
                 <div class="card">
                     <div class="card-header">Daftar Guru</div>
                     <div class="card-body">
-                        <table data-toggle="table" data-search="true">
+                        <table data-toggle="table">
                         <thead>
                         <tr>
                             <th>No</th>
@@ -65,7 +65,12 @@
                 <div class="card">
                     <div class="card-header">Daftar Guru, Mata Pelajaran, dan Kelas</div>
                     <div class="card-body">
-                        <table data-toggle="table" data-search="true">
+                        <form class="example">
+                            <input type="text" placeholder="Search.." name="search">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                        <br>
+                        <table data-toggle="table">
                         <thead>
                         <tr>
                             <th>No</th>

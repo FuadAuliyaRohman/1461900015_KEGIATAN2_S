@@ -8,22 +8,21 @@ use Illuminate\Http\Request;
 
 class TugasPraktikumController extends Controller
 {
-    public function tugas_praktikum_2()
+    public function tugas_praktikum_2(Request $request)
     {   
-        /* Select */
-        $select = Guru::select('nama_guru', 'nip', 'kelamin', 'alamat_guru', 'telpon_guru', 'username')->get();
+        $query = Guru::select('nama_guru', 'nip', 'kelamin', 'alamat_guru', 'telpon_guru', 'username');
+        $select = $query->get();
         
-        /* Select Like */
-        //$select_like = 
-
-        /* Select Join Jadwal*/
-        $select_join = Jadwal::join('data_guru', 'data_guru.id_guru', '=', 'tbl_jadwal.id_guru')
+        $query = Jadwal::join('data_guru', 'data_guru.id_guru', '=', 'tbl_jadwal.id_guru')
                                 ->join('setup_pelajaran', 'setup_pelajaran.id_pelajaran', '=', 'tbl_jadwal.id_pelajaran')
-                                ->join('setup_kelas', 'setup_kelas.id_kelas', '=', 'tbl_jadwal.id_kelas')
-                                ->limit(10)
-                                ->get();
-/*         dd($select, $select_join); */
+                                ->join('setup_kelas', 'setup_kelas.id_kelas', '=', 'tbl_jadwal.id_kelas');
 
-        return view('tugas_praktikum', compact('select', 'select_join'));
+        if($request->has("search")){
+            $query->where('data_guru.nama_guru', 'like', '%' . $request->search . '%');
+        }
+
+        $select_join = $query->get();
+
+        return view('tugaspraktikum_0015', compact('select', 'select_join'));
     }
 }
